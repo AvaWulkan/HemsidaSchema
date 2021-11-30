@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Labb 2 - Ava Wulkan</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<header>
+    <section><h1 id="output"></h1><h1>Träningsschema</h1></section>
+</header>
+<div id="schedule">
+<main>
+    <section id="monday">
+        <article>
+        <h1>Måndag</h1>
+        <ul>
+            <li
+                    is="schedule-monday"
+                    v-for="(activity, index) in mondaySchedule"
+                    v-bind:style="{color: activity.prioColor}"
+                    v-bind:key="activity.id"
+                    v-bind:activity="activity.activity"
+                    v-bind:prio="activity.prio"
+                    v-on:prio="activity.prio = 1; activity.prioColor = 'grey'"
+                    v-on:remove="mondaySchedule.splice(index, 1)"
+            ></li>
+        </ul>
+        </article>
+    </section>
+    <section id="tuesday">
+        <article>
+        <h1>Tisdag</h1>
+        <ul>
+            <li
+                    is="schedule-tuesday"
+                    v-for="(activity, index) in tuesdaySchedule"
+                    v-bind:style="{color: activity.prioColor}"
+                    v-bind:key="activity.id"
+                    v-bind:activity="activity.activity"
+                    v-bind:prio="activity.prio"
+                    v-on:prio="activity.prio = 1; activity.prioColor = 'grey'"
+                    v-on:remove="tuesdaySchedule.splice(index, 1)"
+            ></li>
+        </ul>
+        </article>
+    </section>
+    <section id="wednesday">
+        <article>
+        <h1>Onsdag</h1>
+        <ul>
+            <li
+                    is="schedule-wednesday"
+                    v-for="(activity, index) in wednesdaySchedule"
+                    v-bind:style="{color: activity.prioColor}"
+                    v-bind:key="activity.id"
+                    v-bind:activity="activity.activity"
+                    v-bind:prio="activity.prio"
+                    v-on:prio="activity.prio = 1; activity.prioColor = 'grey'"
+                    v-on:remove="wednesdaySchedule.splice(index, 1)"
+            ></li>
+        </ul>
+        </article>
+    </section>
+    <section id="thursday">
+        <article>
+        <h1>Torsdag</h1>
+        <ul>
+            <li
+                    is="schedule-thursday"
+                    v-for="(activity, index) in thursdaySchedule"
+                    v-bind:style="{color: activity.prioColor}"
+                    v-bind:key="activity.id"
+                    v-bind:activity="activity.activity"
+                    v-bind:prio="activity.prio"
+                    v-on:prio="activity.prio = 1; activity.prioColor = 'grey'"
+                    v-on:remove="thursdaySchedule.splice(index, 1)"
+            ></li>
+        </ul>
+        </article>
+    </section>
+    <section id="friday">
+        <article>
+        <h1>Fredag</h1>
+        <ul>
+            <li
+                    is="schedule-friday"
+                    v-for="(activity, index) in fridaySchedule"
+                    v-bind:style="{color: activity.prioColor}"
+                    v-bind:key="activity.id"
+                    v-bind:activity="activity.activity"
+                    v-bind:prio="activity.prio"
+                    v-on:prio="activity.prio = 1; activity.prioColor = 'grey'"
+                    v-on:remove="fridaySchedule.splice(index, 1)"
+            ></li>
+        </ul>
+        </article>
+    </section>
+    <section id="saturday">
+        <article>
+        <h1>Lördag</h1>
+        <ul>
+            <li
+                    is="schedule-saturday"
+                    v-for="(activity, index) in saturdaySchedule"
+                    v-bind:style="{color: activity.prioColor}"
+                    v-bind:key="activity.id"
+                    v-bind:activity="activity.activity"
+                    v-bind:prio="activity.prio"
+                    v-on:prio="activity.prio = 1; activity.prioColor = 'grey'"
+                    v-on:remove="saturdaySchedule.splice(index, 1)"
+            ></li>
+        </ul>
+        </article>
+    </section>
+    <section id="sunday">
+        <article>
+        <h1>Söndag</h1>
+        <ul>
+            <li
+                    is="schedule-sunday"
+                    v-for="(activity, index) in sundaySchedule"
+                    v-bind:style="{color: activity.prioColor}"
+                    v-bind:key="activity.id"
+                    v-bind:activity="activity.activity"
+                    v-bind:prio="activity.prio"
+                    v-on:prio="activity.prio = 1; activity.prioColor = 'grey'"
+                    v-on:remove="sundaySchedule.splice(index, 1)"
+            ></li>
+        </ul>
+        </article>
+    </section>
+
+</main>
+<section id="add-activity">
+    <article>
+        <h2>Lägg till en aktivitet:</h2>
+        <form v-on:submit.prevent="addNewActivity">
+            <label for="new-schedule-day" class="selectbox">Dag:</label>
+            <select v-model="newScheduleDay" id="new-schedule-day">
+                <option value="Måndag">Måndag</option>
+                <option value="Tisdag">Tisdag</option>
+                <option value="Onsdag">Onsdag</option>
+                <option value="Torsdag">Torsdag</option>
+                <option value="Fredag">Fredag</option>
+                <option value="Lördag">Lördag</option>
+                <option value="Söndag">Söndag</option>
+            </select>
+            <label for="new-activity">Aktivitet:</label>
+            <input v-model="newScheduleActivity" id="new-activity">
+            <button>Lägg till aktiviteten</button>
+        </form>
+    </article>
+</section>
+</div>
+
+<form id="namn">
+    <p><label>Vad heter du? </label><input cols="60" type="text" id="txtName" required><input type="submit" value="ok"></p>
+</form>
+<script src="javascript/localstorage.js"></script>
+
+<footer class="footer">
+    <img src="image/duck-22.png" alt="duck" class="duck">
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+        Vue.component('schedule-monday', {
+            template: `
+    <li>
+    <input type="checkbox" id="done" name="utfört" v-on:click="$emit('prio')">
+        {{ activity }}
+        <button v-on:click="$emit('remove')">x</button>
+    </li>
+    `,
+            props: ['activity', 'prio']
+        })
+
+        Vue.component('schedule-tuesday', {
+            template: `
+    <li>
+    <input type="checkbox" id="done" name="utfört" v-on:click="$emit('prio')">
+        {{ activity }}
+        <button v-on:click="$emit('remove')">x</button>
+    </li>
+    `,
+            props: ['activity', 'prio']
+        })
+
+        Vue.component('schedule-wednesday', {
+            template: `
+    <li>
+    <input type="checkbox" id="done" name="utfört" v-on:click="$emit('prio')">
+        {{ activity }}
+        <button v-on:click="$emit('remove')">x</button>
+    </li>
+    `,
+            props: ['activity', 'prio']
+        })
+
+        Vue.component('schedule-thursday', {
+            template: `
+    <li>
+    <input type="checkbox" id="done" name="utfört" v-on:click="$emit('prio')">
+        {{ activity }}
+        <button v-on:click="$emit('remove')">x</button>
+    </li>
+    `,
+            props: ['activity', 'prio']
+        })
+
+        Vue.component('schedule-friday', {
+            template: `
+    <li>
+    <input type="checkbox" id="done" name="utfört" v-on:click="$emit('prio')">
+        {{ activity }}
+        <button v-on:click="$emit('remove')">x</button>
+    </li>
+    `,
+            props: ['activity', 'prio']
+        })
+
+        Vue.component('schedule-saturday', {
+            template: `
+    <li>
+    <input type="checkbox" id="done" name="utfört" v-on:click="$emit('prio')">
+        {{ activity }}
+        <button v-on:click="$emit('remove')">x</button>
+    </li>
+    `,
+            props: ['activity', 'prio']
+        })
+
+        Vue.component('schedule-sunday', {
+            template: `
+    <li>
+    <input type="checkbox" id="done" name="utfört" v-on:click="$emit('prio')">
+        {{ activity }}
+        <button v-on:click="$emit('remove')">x</button>
+    </li>
+    `,
+            props: ['activity', 'prio']
+        })
+    </script>
+
+    <script src="javascript/vue.js"></script>
+</body>
+</html>

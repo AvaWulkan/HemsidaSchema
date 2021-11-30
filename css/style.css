@@ -1,0 +1,142 @@
+/* Mobile first */
+section{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+    "header"
+    "main-content"
+    "form"
+    "footer";
+    grid-gap: 10px;
+}
+header{
+    grid-area: header;
+    padding: 0px;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+main{
+    grid-area: main-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+main button{
+    color: darkred;
+    background-color: transparent;
+    border-color: transparent;
+}
+section#monday{
+    border: 5px solid darkgreen;
+    background-color: lightgreen;
+    padding-bottom: 5px;
+    width: 95%;
+    border-radius: 10px;
+}section#monday button:hover{
+     border-color: darkgreen;
+ }
+section#tuesday{
+    border: 5px solid darkblue;
+    background-color: lightblue;
+    padding-bottom: 5px;
+    width: 95%;
+    border-radius: 10px;
+}section#tuesday button:hover{
+     border-color: darkblue;
+ }
+section#wednesday{
+    border: 5px solid grey;
+    background-color: snow;
+    padding-bottom: 5px;
+    width: 95%;
+    border-radius: 10px;
+}section#wednesday button:hover{
+     border-color: grey;
+ }
+section#thursday{
+    border: 5px solid saddlebrown;
+    background-color: sandybrown;
+    padding-bottom: 5px;
+    width: 95%;
+    border-radius: 10px;
+}section#thursday button:hover{
+     border-color: saddlebrown;
+ }
+section#friday{
+    border: 5px solid yellow;
+    background-color: lightyellow;
+    padding-bottom: 5px;
+    width: 95%;
+    border-radius: 10px;
+}section#friday button:hover{
+     border-color: yellow;
+ }
+section#saturday{
+    border: 5px solid hotpink;
+    background-color: lightpink;
+    padding-bottom: 5px;
+    width: 95%;
+    border-radius: 10px;
+}
+section#saturday button:hover{
+    border-color: hotpink;
+}
+section#sunday{
+    border: 5px solid darkred;
+    background-color: lightcoral;
+    padding-bottom: 5px;
+    width: 95%;
+    border-radius: 10px;
+}
+section#sunday button:hover{
+    border-color: darkred;
+}
+footer{
+    text-align: right;
+}
+h1{
+    font-family: Georgia, Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: black;
+    margin: 5px;
+    margin-bottom: 12px;
+    text-align: left;
+}
+ul{
+    margin: 10px;
+    padding: 0px;
+    list-style-type: none;
+}
+li{
+    font-size: 16px;
+    line-height:200%;
+}
+.duck{
+    max-width: 100px;
+    height: auto;
+    alignment: right;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+/* Tablet */
+@media screen and (min-width: 768px) and (max-width: 1024px) {}
+
+/* Desktop */
+@media screen and (min-width: 1025px) {
+    main{
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    h1{
+        font-size: 30px;
+        margin: 5px;
+        margin-bottom: 12px;
+        text-align: center;
+    }
+}
